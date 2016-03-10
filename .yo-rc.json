@@ -1,0 +1,167 @@
+{
+  "generator-react-flux-generator": {
+    "props": {
+      "name": "GuessTheMelody",
+      "version": "0.0.1",
+      "id": "com.guessthemelody.erick",
+      "dependencies": "default",
+      "tempPath": "/home/erick/dev/cordova-react-flux-generator/generator-react-flux-generator/generators/app/templates",
+      "destPath": "/home/erick/dev/Ugadai_Melodiyu/GuessTheMelody"
+    },
+    "files": [
+      [
+        "src/app/",
+        "src/app/",
+        false
+      ],
+      [
+        "src/icons/",
+        "src/icons/",
+        false
+      ],
+      [
+        "src/img/",
+        "src/img/",
+        false
+      ],
+      [
+        "src/splashes/",
+        "src/splashes/",
+        false
+      ],
+      [
+        "src/styles/",
+        "src/styles/",
+        false
+      ],
+      [
+        "src/styles/",
+        "src/styles/",
+        false
+      ],
+      [
+        "src/icon.png",
+        "src/icon.png",
+        false
+      ],
+      [
+        "src/index.html",
+        "src/index.html",
+        false
+      ],
+      [
+        ".babelrc",
+        ".babelrc",
+        false
+      ],
+      [
+        ".editorconfig",
+        ".editorconfig",
+        false
+      ],
+      [
+        ".jscsrc",
+        ".jscsrc",
+        false
+      ],
+      [
+        ".eslintignore",
+        ".eslintignore",
+        false
+      ],
+      [
+        ".eslintrc",
+        ".eslintrc",
+        false
+      ],
+      [
+        ".gitignore",
+        ".gitignore",
+        false
+      ],
+      [
+        "gulpfile.js",
+        "gulpfile.js",
+        false
+      ],
+      [
+        "README.md",
+        "README.md",
+        false
+      ],
+      [
+        "webpack.dev.config.js",
+        "webpack.dev.config.js",
+        false
+      ],
+      [
+        "webpack.prod.config.js",
+        "webpack.prod.config.js",
+        false
+      ],
+      [
+        "package.json",
+        "package.json",
+        true
+      ],
+      [
+        "src/config.xml",
+        "src/config.xml",
+        true
+      ]
+    ],
+    "dependencies": {
+      "default": {
+        "dev": [
+          "autoprefixer",
+          "babel-core",
+          "babel-eslint",
+          "babel-loader",
+          "babel-polyfill",
+          "babel-preset-es2015",
+          "babel-preset-react",
+          "babel-preset-stage-0",
+          "babel-preset-stage-1",
+          "css-loader",
+          "eslint",
+          "eslint-config-airbnb",
+          "eslint-loader",
+          "eslint-plugin-react",
+          "extract-text-webpack-plugin",
+          "file-loader",
+          "gulp",
+          "gulp-clean",
+          "gulp-imagemin",
+          "gulp-zip",
+          "http-server",
+          "image-webpack-loader",
+          "json-loader",
+          "merge-stream",
+          "node-sass",
+          "postcss-loader",
+          "react-hot-loader",
+          "sass-loader",
+          "style-loader",
+          "webpack",
+          "webpack-dev-server"
+        ],
+        "prod": [
+          "classnames",
+          "flux",
+          "history",
+          "lodash",
+          "normalize.scss",
+          "react",
+          "react-dom",
+          "react-modal",
+          "react-router",
+          "react-spinkit"
+        ]
+      },
+      "custom": {
+        "dev": [],
+        "prod": []
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "GuessTheMelody",
+  "version": "0.0.1",
+  "description": "",
+  "devServerPort": "8080",
+  "scripts": {
+    "dev": "webpack-dev-server --config webpack.dev.config.js --hot --progress --colors --port 8080",
+    "static": "webpack -p --config webpack.prod.config.js && gulp static && http-server -p 3000 ./.public",
+    "build": "webpack -p --config webpack.prod.config.js && gulp",
+    "lint": "eslint ./src/app/**/*",
+    "jscs": "jscs src/app"
+  },
+  "author": "",
+  "repository": {
+    "type": "",
+    "url": ""
+  },
+  "dependencies": {
+    "classnames": "^2.2.3",
+    "flux": "^2.1.1",
+    "history": "^2.0.1",
+    "lodash": "^4.6.1",
+    "normalize.scss": "^0.1.0",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "react-modal": "^0.6.1",
+    "react-router": "^2.0.1",
+    "react-spinkit": "^1.1.4"
+  },
+  "devDependencies": {}
+}
