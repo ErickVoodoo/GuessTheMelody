@@ -18,9 +18,6 @@ module.exports = {
         extensions: ['', '.js', '.json', '.jsx', '.scss'],
     },
     devtool: "source-map",
-    eslint: {
-        configFile: './.eslintrc',
-    },
     output: {
         path: __dirname + '/' + publicFolderName,
         publicPath: localhost + 'src/',
@@ -30,6 +27,13 @@ module.exports = {
         new webpack.NoErrorsPlugin(),
     ],
     module: {
+        preLoaders: [
+            {
+                test: /\.jsx?$/,
+                loaders: ['jscs-loader'],
+                include: path.join(__dirname, 'src')
+            }
+        ],
         loaders: [
             {
                 test: /\.jsx?$/,
@@ -38,7 +42,7 @@ module.exports = {
             },
             {
                 test: /\.(scss|css)$/,
-                loader: 'style-loader!css-loader?localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader!sass-loader?sourceMap'
+                loader: 'style-loader!css-loader?sourceMap!postcss-loader!sass-loader?sourceMap'
             },
             {
                 test: /\.(png|jpg|gif)$//*, loader: 'file-loader'*/,
@@ -61,5 +65,15 @@ module.exports = {
     ],
     eslint: {
         configFile: './.eslintrc',
+    },
+    jscs: {
+        // JSCS errors are displayed by default as warnings.
+        // Set `emitErrors` to `true` to display them as errors.
+        emitErrors: false,
+
+        // JSCS errors do not interrupt the compilation.
+        // Set `failOnHint` to `true` if you want any file with
+        // JSCS errors to fail.
+        failOnHint: false,
     }
 };
