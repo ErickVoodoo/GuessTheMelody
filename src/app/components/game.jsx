@@ -26,6 +26,9 @@ export default class SecondPage extends React.Component {
   componentDidMount() {
     Store.addStoreChangeListener(this.changeStoreCallback);
     Ajax.addChangeListener(this.changeAjaxCallback);
+    setTimeout(function () {
+      Action.actionStart(null, Constants.MUSIC.GAME_MUSIC);
+    }, Constants.APP_SETTINGS.MUSIC_STOP_SPEED);
   }
 
   componentWillUnmount() {
@@ -60,10 +63,12 @@ export default class SecondPage extends React.Component {
   }
 
   onClickAddData() {
+    Action.actionStart(null, Constants.SOUNDS.BUTTON_CLICK);
     Action.actionStart(this.state.inputStoreValue, Constants.ACTIONS.ADD_DATA);
   }
 
   onClickLoadData() {
+    Action.actionStart(null, Constants.SOUNDS.BUTTON_CLICK);
     this.setState({
       source: '',
     });

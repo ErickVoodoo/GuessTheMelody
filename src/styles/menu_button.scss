@@ -1,0 +1,19 @@
+:local(.content) {
+  width: 100%;
+  text-align: left;
+  background: #123123;
+  margin-bottom: 10px;
+
+  img {
+    width: 10%;
+    height: 10%;
+    margin-left: 10%;
+    margin-right: 5%;
+  }
+
+  a {
+    width: 75%;
+    text-align: left;
+    background: #123456;
+  }
+}

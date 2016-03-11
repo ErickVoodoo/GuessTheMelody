@@ -7,6 +7,8 @@ html {
   width: 100%;
   font-family: "Times New Roman Normal";
   text-transform: uppercase;
+  margin: 0px;
+  padding: 0px;
 }
 
 :global .container {
@@ -21,16 +23,22 @@ html {
 }
 
 :global button {
-  padding: $button-padding-medium;
-  margin: $button-padding-medium;
+  padding: $button-padding-small-static;
+  margin: $button-margin-small-static;
   border: 1px solid;
   border-radius: 2px;
   text-transform: uppercase;
 }
 
+:global button:active {
+  background: #123322;
+  padding: $button-padding-small-active;
+  margin: $button-margin-small-active;
+}
+
 :global input {
-  padding: $button-padding-small;
-  margin: $button-padding-small;
+  padding: $button-padding-small-static;
+  margin: $button-margin-small-static;
   text-transform: uppercase;
   font-size: $font-size-medium;
 }
