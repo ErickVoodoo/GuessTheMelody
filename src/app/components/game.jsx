@@ -1,39 +1,36 @@
-import style from '../../styles/list.scss';
+import style from '../../styles/game.scss';
+import dialog from '../../styles/dialog.scss';
 
 import React from 'react';
 import Store from '../stores/main';
 import Action from '../actions/main';
-import Ajax from '../middleware/ajax';
-
-import { ListItem } from './common';
+import cx from 'classnames';
 import { Constants } from '../utils';
 
-export default class SecondPage extends React.Component {
+import logo from '../../img/game.png';
+import CustomDialog from './common/dialog';
+
+import Music from '../stores/music';
+
+export default class Game extends React.Component {
   constructor(props) {
     super(props);
     this.changeStoreCallback = this.storeChangeListener.bind(this);
-    this.changeAjaxCallback = this.ajaxChangeListener.bind(this);
 
     this.state = {
-      dataList: Store.data || [],
-      source: Store.source || '',
-      inputStoreValue: '',
-      inputAjaxValue: '',
-      isLoading: false,
+      isPauseHided: true,
     };
   }
 
   componentDidMount() {
     Store.addStoreChangeListener(this.changeStoreCallback);
-    Ajax.addChangeListener(this.changeAjaxCallback);
-    setTimeout(function () {
+    /*setTimeout(function () {
       Action.actionStart(null, Constants.MUSIC.GAME_MUSIC);
-    }, Constants.APP_SETTINGS.MUSIC_STOP_SPEED);
+    }, Constants.APP_SETTINGS.MUSIC_STOP_SPEED);*/
   }
 
   componentWillUnmount() {
     Store.removeStoreChangeListener(this.changeStoreCallback);
-    Ajax.removeChangeListener(this.changeAjaxCallback);
   }
 
   ajaxChangeListener() {
@@ -67,43 +64,93 @@ export default class SecondPage extends React.Component {
     Action.actionStart(this.state.inputStoreValue, Constants.ACTIONS.ADD_DATA);
   }
 
-  onClickLoadData() {
-    Action.actionStart(null, Constants.SOUNDS.BUTTON_CLICK);
+  onBackButton() {
+    //Music.onApproximateVolume();
+    window.location.href = '#/menu';
+  }
+
+  onPauseGame() {
+    console.log("onPauseGame");
     this.setState({
-      source: '',
+      isPauseHided: false,
     });
-    Ajax.execute(this.state.inputAjaxValue, 'GET', null)
-      .then((data) => {
-        Action.actionStart(data, Constants.ACTIONS.GET_DATA_SUCCESS);
-      })
-      .catch((data) => {
-        Action.actionStart(data, Constants.ACTIONS.GET_DATA_FAIL);
-      });
+  }
+
+  onRepeatSound() {
+
+  }
+
+  hidePauseDialog() {
+    console.log("hidePauseDialog");
+    this.setState({
+      isPauseHided: true
+    });
   }
 
   render() {
     return (
-      <div className={ style. main }>
-        <div className={ style.first }>
-          <p>example of store and action</p>
-          <input onChange={ this.onChangeStoreInput.bind(this)}
-            value={ this.state.inputStoreValue } type="text" placeholder="value..."/>
-          <button onClick={ this.onClickAddData.bind(this) }>add new</button>
-          {
-            this.state.dataList.length != 0 && this.state.dataList.map((item, index) => {
-              return (<ListItem value={ item } key={ index }/>);
-            })
-          }
+      <div className={ cx(style.container, 'text-blue') }>
+        <div className={ style.main }>
+          <div className={ style.header }>
+            <div className={ style.left }>
+              <span>1 раунд</span>
+            </div>
+            <div className={ style.right }>
+              <span>Какой инструмент сейчас играет?</span>
+            </div>
+          </div>
+          <div className={ style.content }>
+            <table>
+              <tr>
+                <td>
+                  <img src={ logo }/>
+                  <span>Аккордеон</span>
+                </td>
+                <td>
+                  <img src={ logo }/>
+                  <span>Рояль</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <img src={ logo }/>
+                  <span>Пианино</span>
+                </td>
+                <td>
+                  <img src={ logo }/>
+                  <span>Баян</span>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div className={ cx(style.footer, 'backgroud-blue') }>
+            <div className={ style.left }>
+              <button onClick={ this.onBackButton.bind(this) }>back</button>
+            </div>
+            <div className={ style.middle }>
+              <button onClick={ this.onPauseGame.bind(this) }>pause</button>
+            </div>
+            <div className={ style.right }>
+              <button onClick={ this.onRepeatSound.bind(this) }>repeat</button>
+            </div>
+          </div>
         </div>
-        <div className="horiz-border"/>
-        <div className={ style.second }>
-          <p>example of HTTP request</p>
-          <input onChange={ this.onChangeAjaxInput.bind(this)}
-            value={ this.state.inputAjaxValue } type="text" placeholder="http://..."/>
-          <button onClick={ this.onClickLoadData.bind(this) }>get data</button>
-          <p className={ this.state.isLoading || 'hidden' }>Loading...</p>
-          <p>{ this.state.source }</p>
-        </div>
+        <CustomDialog isHidden={ this.state.isPauseHided } onHideDialog={ this.hidePauseDialog.bind(this) }>
+          <div className={ dialog.dialog }>
+            <div className={ dialog.header }>
+              <span>Header</span>
+            </div>
+            <div className={ dialog.content }>
+              <p>Content</p>
+              <p>Content</p>
+              <p>Content</p>
+              <p>Content</p>
+            </div>
+            <div className={ dialog.footer }>
+              <span>Footer</span>
+            </div>
+          </div>
+        </CustomDialog>
       </div>
     );
   }

@@ -17,15 +17,15 @@ export default class FirstPage extends React.Component {
   }
 
   onClickNavigateToGame() {
-    Music.onApproximateVolume();
+    //Music.onApproximateVolume();
     Action.actionStart(null, Constants.SOUNDS.BUTTON_CLICK);
     window.location.href = '#/game';
   }
 
   componentDidMount() {
-    setTimeout(function () {
+    /*setTimeout(function () {
       Action.actionStart(null, Constants.MUSIC.MENU_MUSIC);
-    }, Constants.APP_SETTINGS.MUSIC_STOP_SPEED);
+    }, Constants.APP_SETTINGS.MUSIC_STOP_SPEED);*/
   }
 
   render() {
@@ -34,12 +34,11 @@ export default class FirstPage extends React.Component {
         <div className={ style.header }>
           </div>
           <div className={ style.content }>
-            <Button clickListener={ this.onClickNavigateToGame.bind(this) }>Играть</Button>
-            <Button clickListener={ this.onClickNavigateToGame.bind(this) }>Достижения</Button>
-            <Button clickListener={ this.onClickNavigateToGame.bind(this) }>Настройки</Button>
+            <Button clickListener={ this.onClickNavigateToGame.bind(this) } textColor="text-green">Играть</Button>
+            <Button clickListener={ this.onClickNavigateToGame.bind(this) } textColor="text-blue">Достижения</Button>
+            <Button clickListener={ this.onClickNavigateToGame.bind(this) } textColor="text-red">Настройки</Button>
         </div>
       </div>
     );
   }
 }
-// <img src={ logo }/>
