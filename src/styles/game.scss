@@ -3,7 +3,7 @@
 :local(.container) {
   width: 100%;
   height: inherit;
-  
+
   :local(.main) {
     width: 100%;
     height: inherit;
@@ -66,8 +66,8 @@
           height: 50%;
 
           img {
-            width: auto;
-            height: inherit;
+            width: 100%;
+            height: auto;
           }
         }
         tr td:active {
