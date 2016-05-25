@@ -14,6 +14,27 @@ export default class FirstPage extends React.Component {
     this.state = {
       audio: new Audio(),
     };
+
+    let localPath = '/static/music/game.mp3';
+    let p = window.location.pathname;
+    let root = p.substring(0, p.lastIndexOf('/')) + localPath;
+    alert(root);
+
+    if (window.Media != null) {
+      alert('Music != null');
+      var myMedia = new Media(root, this.onSuccess, this.onError);
+      myMedia.play();
+    } else {
+      alert('Music ==null');
+    }
+  }
+
+  onError(err) {
+    alert('Error:' + JSON.stringify(err));
+  }
+
+  onSuccess() {
+    alert('Success');
   }
 
   onClickNavigateToGame() {

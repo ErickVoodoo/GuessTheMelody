@@ -5,7 +5,7 @@ import logo from '../../img/logo.jpg';
 
 export default class Logo extends React.Component {
   componentDidMount() {
-    setTimeout(function() {
+    setTimeout(function () {
       window.location.href = '#/menu';
     }, 2000);
   }

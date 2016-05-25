@@ -70,7 +70,7 @@ export default class Game extends React.Component {
   }
 
   onPauseGame() {
-    console.log("onPauseGame");
+    console.log('onPauseGame');
     this.setState({
       isPauseHided: false,
     });
@@ -81,9 +81,9 @@ export default class Game extends React.Component {
   }
 
   hidePauseDialog() {
-    console.log("hidePauseDialog");
+    console.log('hidePauseDialog');
     this.setState({
-      isPauseHided: true
+      isPauseHided: true,
     });
   }
 

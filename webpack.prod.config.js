@@ -56,7 +56,15 @@ module.exports = {
                 test: /\.(json)$/, loader: 'json-loader'
             },
             {
-                test   : /\.(ttf|eot|svg|woff|otf|mp3)(\?[a-z0-9]+)?$/,
+              test: /(\.mp3)$/,
+              include: /(static)/,
+              loaders: [
+                'file?name=[path][name].[ext]&context=./src',
+                'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+              ],
+            },
+            {
+                test   : /\.(ttf|eot|svg|woff|otf)(\?[a-z0-9]+)?$/,
                 loader : 'file'
             }
         ]
