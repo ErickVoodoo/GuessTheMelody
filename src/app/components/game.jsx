@@ -11,6 +11,8 @@ import logo from '../../img/game.png';
 import CustomDialog from './common/dialog';
 
 import Music from '../stores/music';
+import GameMusic from '../../music/game.mp3';
+import Media from 'media';
 
 export default class Game extends React.Component {
   constructor(props) {
@@ -24,9 +26,12 @@ export default class Game extends React.Component {
 
   componentDidMount() {
     Store.addStoreChangeListener(this.changeStoreCallback);
-    /*setTimeout(function () {
+    setTimeout(function () {
       Action.actionStart(null, Constants.MUSIC.GAME_MUSIC);
-    }, Constants.APP_SETTINGS.MUSIC_STOP_SPEED);*/
+    }, Constants.APP_SETTINGS.MUSIC_STOP_SPEED);
+    setTimeout(function () {
+      Action.actionStart(null, Constants.MUSIC.GLOBAL_PAUSE_MUSIC);
+    }, Constants.APP_SETTINGS.MUSIC_STOP_SPEED);
   }
 
   componentWillUnmount() {
@@ -77,7 +82,15 @@ export default class Game extends React.Component {
   }
 
   onRepeatSound() {
-
+    var mm = new Media(GameMusic, // success callback
+             function () { console.log("playAudio():Audio Success"); },
+            // error callback
+             function (err) { console.log("playAudio():Audio Error: " + err); }
+    );
+mm.play();
+        /*setTimeout(function () {
+      Action.actionStart(null, Constants.MUSIC.GLOBAL_PAUSE_MUSIC);
+    }, Constants.APP_SETTINGS.MUSIC_STOP_SPEED);*/
   }
 
   hidePauseDialog() {
@@ -101,26 +114,28 @@ export default class Game extends React.Component {
           </div>
           <div className={ style.content }>
             <table>
-              <tr>
-                <td>
-                  <img src={ logo }/>
-                  <span>Аккордеон</span>
-                </td>
-                <td>
-                  <img src={ logo }/>
-                  <span>Рояль</span>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <img src={ logo }/>
-                  <span>Пианино</span>
-                </td>
-                <td>
-                  <img src={ logo }/>
-                  <span>Баян</span>
-                </td>
-              </tr>
+              <tbody>
+                <tr>
+                  <td>
+                    <img src={ logo }/>
+                    <span>Аккордеон</span>
+                  </td>
+                  <td>
+                    <img src={ logo }/>
+                    <span>Рояль</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <img src={ logo }/>
+                    <span>Пианино</span>
+                  </td>
+                  <td>
+                    <img src={ logo }/>
+                    <span>Баян</span>
+                  </td>
+                </tr>
+              </tbody>
             </table>
           </div>
           <div className={ cx(style.footer, 'backgroud-blue') }>

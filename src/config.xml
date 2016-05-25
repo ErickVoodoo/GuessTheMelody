@@ -13,14 +13,14 @@
   <name>GuessTheMelody</name>
   <description></description>
 
-  <plugin name="cordova-plugin-camera" source="npm" spec="~2.1.0" />
+  <plugin name="cordova-plugin-media" source="npm" spec="~2.1.0" />
   <plugin name="cordova-plugin-file" source="npm" spec="~3.0.0" />
   <plugin name="cordova-plugin-splashscreen" source="npm" spec="~3.1.0" />
   <plugin name="cordova-plugin-media" source="npm" spec="~2.3.0" />
 
   <preference name="permissions"                value="none"/>
   <preference name="phonegap-version"           value="cli-5.2.0" />
-  <preference name="orientation"                value="landscape" />
+  <preference name="orientation"                value="portrait" />
   <preference name="target-device"              value="universal" />
   <preference name="fullscreen"                 value="true" />
   <preference name="webviewbounce"              value="false" />
